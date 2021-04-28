@@ -1,0 +1,36 @@
+.container {
+  width: 360px;
+  height: 306px;
+  /* background-color: #ddffe4; */
+  border: 1px solid #00d12e;
+  border-radius: 0.375em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container > h1 {
+  font-size: 1.875em;
+}
+
+.light {
+  width: 74px;
+  height: 144px;
+  border-radius: 0.375em;
+  border: 1px solid;
+  margin-top: 3.125em;
+  margin-bottom: 2.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25em 1.5625em;
+}
+
+.light > div {
+  width: 24px;
+  height: 24px;
+  /* box-shadow: 0px 0px 10px #00d12e; */
+  background-color: #c4c4c4;
+  border-radius: 50%;
+}
