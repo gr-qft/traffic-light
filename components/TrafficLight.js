@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./TrafficLight.module.css";
 
 const config = {
@@ -58,20 +58,31 @@ const config = {
 // We want the order to be green -> yellow -> red
 const lights = ["green", "yellow", "red"];
 
-export default function TrafficLight({ initialState = "red" }) {
+// By default, we suppose the total time is on a span of 10.
+// Then, 1/10 is used for yellow light by default.
+export default function TrafficLight({
+  initialState = "red",
+  totalTime = 20000,
+  yellowFraction = 1,
+}) {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setState((prevState) => {
-        const index = lights.findIndex((l) => {
-          return l === prevState;
+    const t = setTimeout(
+      () => {
+        setState((prevState) => {
+          const index = lights.findIndex((l) => {
+            return l === prevState;
+          });
+          return lights[index === lights.length - 1 ? 0 : index + 1];
         });
-        return lights[index === lights.length - 1 ? 0 : index + 1];
-      });
-    }, 20000 / 3);
-    return () => clearInterval(t);
-  }, []);
+      },
+      state === "yellow"
+        ? (yellowFraction / 10) * totalTime
+        : ((10 - yellowFraction) * totalTime) / (2 * 10)
+    );
+    return () => clearTimeout(t);
+  }, [state]);
 
   const properties = config[state];
   return (
