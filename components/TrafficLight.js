@@ -56,7 +56,6 @@ const config = {
 };
 
 const lights = ["green", "yellow", "red"];
-const N = 2;
 
 export default function TrafficLight() {
   const [state, setState] = useState("green");
@@ -67,7 +66,7 @@ export default function TrafficLight() {
         const index = lights.findIndex((l) => {
           return l === prevState;
         });
-        return lights[index === N ? 0 : index + 1];
+        return lights[index === lights.length - 1 ? 0 : index + 1];
       });
     }, 20000 / 3);
     return () => clearInterval(t);
