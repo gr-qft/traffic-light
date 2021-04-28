@@ -55,10 +55,11 @@ const config = {
   },
 };
 
+// We want the order to be green -> yellow -> red
 const lights = ["green", "yellow", "red"];
 
-export default function TrafficLight() {
-  const [state, setState] = useState("green");
+export default function TrafficLight({ initialState = "red" }) {
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     const t = setInterval(() => {
