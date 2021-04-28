@@ -1,5 +1,7 @@
 # Traffic Light
 
+### General info
+
 - Link to the mockup
 
 https://www.figma.com/file/kRIpfyZQj4LV19qKFpvLtA/New-Dev-Test?node-id=1%3A202
@@ -21,3 +23,9 @@ and it is used here:
 https://github.com/gr-qft/traffic-light/blob/main/pages/index.js
 
 - To run the app, pull and run `yarn dev`. The local address is `http://localhost:3000/`.
+
+### Comments
+
+- I would want to clarify what is meant precisely in the problem: _the time of red and green_ should be equal. In the current implementation they are, but I don't know if yellow light should be treated in any specific way.
+
+- It would probably be nice to add transition to the app.
