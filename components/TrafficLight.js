@@ -72,14 +72,15 @@ export default function TrafficLight() {
     return () => clearInterval(t);
   }, []);
 
+  const properties = config[state];
   return (
-    <div style={config[state].container} className={styles.container}>
-      <div style={config[state].border} className={styles.light}>
-        {config[state].light.map((style, index) => (
+    <div style={properties.container} className={styles.container}>
+      <div style={properties.border} className={styles.light}>
+        {properties.light.map((style, index) => (
           <div key={index} style={style}></div>
         ))}
       </div>
-      <h1 style={config[state].text}> The light is {state} </h1>
+      <h1 style={properties.text}> The light is {state} </h1>
     </div>
   );
 }
