@@ -1,7 +1,6 @@
 .container {
   width: 360px;
   height: 306px;
-  /* background-color: #ddffe4; */
   border: 1px solid #00d12e;
   border-radius: 0.375em;
   display: flex;
@@ -30,7 +29,6 @@
 .light > div {
   width: 24px;
   height: 24px;
-  /* box-shadow: 0px 0px 10px #00d12e; */
   background-color: #c4c4c4;
   border-radius: 50%;
 }
