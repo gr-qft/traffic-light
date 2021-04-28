@@ -26,6 +26,6 @@ https://github.com/gr-qft/traffic-light/blob/main/pages/index.js
 
 ### Comments
 
-- I would want to clarify what is meant precisely in the problem: _the time of red and green_ should be equal. In the current implementation they are, but I don't know if yellow light should be treated in any specific way.
+- I would want to clarify what is meant precisely in the problem: _the time of red and green_ should be equal. In the current implementation they are, but I don't know if yellow light should be treated in any specific way. I think a good solution to this issue would be to allow the app to adjust the fraction of the total time that the yellow light takes up.
 
 - It would probably be nice to add transition to the app.
