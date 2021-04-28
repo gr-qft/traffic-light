@@ -58,6 +58,16 @@ const config = {
 // We want the order to be green -> yellow -> red
 const lights = ["green", "yellow", "red"];
 
+// This function computes the total time for yellow light,
+// using the fraction of time alloted for it. We assume
+// red and green will be alloted equal time.
+function getTime(state, totalTime, yellowFraction) {
+  if (state === "yellow") {
+    return (yellowFraction / 10) * totalTime;
+  }
+  return ((10 - yellowFraction) * totalTime) / (2 * 10);
+}
+
 // By default, we suppose the total time is on a span of 10.
 // Then, 1/10 is used for yellow light by default.
 export default function TrafficLight({
@@ -68,19 +78,14 @@ export default function TrafficLight({
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    const t = setTimeout(
-      () => {
-        setState((prevState) => {
-          const index = lights.findIndex((l) => {
-            return l === prevState;
-          });
-          return lights[index === lights.length - 1 ? 0 : index + 1];
+    const t = setTimeout(() => {
+      setState((prevState) => {
+        const index = lights.findIndex((l) => {
+          return l === prevState;
         });
-      },
-      state === "yellow"
-        ? (yellowFraction / 10) * totalTime
-        : ((10 - yellowFraction) * totalTime) / (2 * 10)
-    );
+        return lights[index === lights.length - 1 ? 0 : index + 1];
+      });
+    }, getTime(state, totalTime, yellowFraction));
     return () => clearTimeout(t);
   }, [state]);
 
